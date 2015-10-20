@@ -22,4 +22,5 @@ Route::controllers([
 
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function() {
 	Route::resource('tag', 'TagController');
+	Route::resource('article', 'ArticleController');
 });

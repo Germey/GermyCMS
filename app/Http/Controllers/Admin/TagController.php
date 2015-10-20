@@ -4,6 +4,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Model\Tag;
+use Redirect, Input, Auth;
 
 class TagController extends Controller {
 
@@ -13,7 +14,7 @@ class TagController extends Controller {
 	 * @return Response
 	 */
 	public function index() {
-		return view('admin.tag.index')->withTags(Tag::all());
+		return view('admin.tag.index')->withTags(Tag::paginate(15));
 	}
 
 	/**
@@ -21,9 +22,8 @@ class TagController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function create()
-	{
-		//
+	public function create() {
+		return view('admin.tag.create')->withTags(Tag::all());
 	}
 
 	/**
@@ -31,9 +31,22 @@ class TagController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store()
-	{
-		//
+	public function store(Request $request) {
+		$this->validate($request, [
+			'name' => 'required|max:255',
+			'parent' => 'required',
+		]);
+
+		$tag = new Tag;
+		$tag->name = Input::get('name');
+		$tag->parent = Input::get('parent');
+
+		if ($tag->save()) {
+			return Redirect::to('admin/tag')->with('success','添加成功！');
+		} else {
+			return Redirect::back()->withInput()->with('errors','添加失败！');
+		}
+
 	}
 
 	/**
@@ -42,8 +55,7 @@ class TagController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function show($id)
-	{
+	public function show($id) {
 		//
 	}
 
@@ -53,9 +65,8 @@ class TagController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function edit($id)
-	{
-		//
+	public function edit($id) {
+		return view('admin.tag.edit')->with("thisTag", Tag::find($id))->withTags(Tag::all());
 	}
 
 	/**
@@ -64,9 +75,23 @@ class TagController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id)
-	{
-		//
+	public function update(Request $request, $id) {
+		$this->validate($request, [
+			'name' => 'required',
+			'parent' => 'required',
+		]);
+
+		$tag = Tag::find($id);
+
+		$tag->name = Input::get('name');
+		$tag->parent = Input::get('parent');
+
+		if ($tag->save()) {
+			return Redirect::to('admin/tag')->with('success','修改成功！');
+		} else {
+			return Redirect::back()->withInput->with('errors', '修改失败！');
+		}
+
 	}
 
 	/**
@@ -75,9 +100,14 @@ class TagController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function destroy($id)
-	{
-		//
+	public function destroy($id) {
+		$tag = Tag::find($id);
+		if ($tag->delete()) {
+			return Redirect::to('admin/tag')->with('success','删除成功！');
+		} else {
+			return Redirect::to('admin/tag')->with('errors', '删除失败！');
+		}
+
 	}
 
 }
