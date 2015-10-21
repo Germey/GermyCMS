@@ -4,13 +4,12 @@ $(document).ready(function(){
 	$('input[type=checkbox],input[type=radio],input[type=file]').uniform();
 	
 	$('select').select2();
-	
 	// Form Validation
     $("#create_tag").validate({
 		rules:{
-			required:{
+			name:{
 				required:true
-			},
+			}
 		},
 		errorClass: "help-inline",
 		errorElement: "span",

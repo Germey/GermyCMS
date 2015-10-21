@@ -7,10 +7,10 @@
 			<div class="widget-box">
 				<div class="widget-title"> 
 					<span class="icon"> <i class="icon-info-sign"></i> </span>
-					<h5>Form validation</h5>
+					<h5></h5>
 				</div>
 				<div class="widget-content nopadding">
-					<form class="form-horizontal" method="post" action="{{ URL('admin/tag') }}">
+					<form class="form-horizontal" method="post" action="{{ URL('admin/tag') }}" id="create_tag">
 						<input type="hidden" name="_token" value="{{ csrf_token() }}">
 						<div class="control-group">
 							<label class="control-label">标签名</label>
@@ -28,15 +28,19 @@
 								</select>
 							</div>
 			            </div>
-						<div class="form-actions">
-							<button class="btn btn-lg btn-info">新增</button>
-						</div>
+						
+						<input type="submit" class="btn btn-lg btn-info" value="新增">
+						
 					</form>
 				</div>
 			</div>
 		</div>
     </div>
 </div>
+<script src="{{ asset('js/jquery.uniform.js') }}"></script>
+<script src="{{ asset('js/select2.min.js') }}"></script>
+<script src="{{ asset('js/jquery.validate.js') }}"></script>
+<script src="{{ asset('js/matrix.form_validation.js') }}"></script>
 
 
 @endsection

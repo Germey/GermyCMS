@@ -62,8 +62,7 @@
 		</div>
     </div>
 </div>
-<script>
-	
-</script>
+<script src="{{ asset('js/wysihtml5-0.3.0.js') }}"></script>
+<script src="{{ asset('js/bootstrap-wysihtml5.js') }}"></script> 
 
 @endsection
