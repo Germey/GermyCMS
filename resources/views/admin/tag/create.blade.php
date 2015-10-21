@@ -10,7 +10,7 @@
 					<h5>Form validation</h5>
 				</div>
 				<div class="widget-content nopadding">
-					<form class="form-horizontal" method="post" action="{{ URL('admin/tag') }}" name="create_tag" id="create_tag" novalidate="novalidate">
+					<form class="form-horizontal" method="post" action="{{ URL('admin/tag') }}">
 						<input type="hidden" name="_token" value="{{ csrf_token() }}">
 						<div class="control-group">
 							<label class="control-label">标签名</label>

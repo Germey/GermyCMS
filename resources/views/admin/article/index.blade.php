@@ -27,20 +27,20 @@
 					@foreach ($articles as $article)
 						<tr>
 							<td><input type="checkbox" /></td>
-							<td>{{ $article->id }}</td>
-							<td>{{ $article->name }}</td>
-							<td>
-							</td>
-							<td>
+							<td class="text-center span6">{{ $article->title }}</td>
+							<td class="span2">
 								<a href="{{ URL('admin/article/'.$article->id.'/edit')}}" class="btn btn-mini btn-success"><i class="icon-edit"></i> 编辑</a>
-							</td>
-							<td>
 								<form action="{{ URL('admin/article/'.$article->id) }}" method="POST" style="display: inline;">
 									<input name="_method" type="hidden" value="DELETE">
 									<input type="hidden" name="_token" value="{{ csrf_token() }}">
 									<button type="submit" class="btn btn-mini btn-danger"><i class="icon-remove"></i> 删除</button>
 								</form>
 							</td>
+							<td class="text-center span2">已发布</td>
+							<td class="text-center span">{{ $article->pv }}</td>
+							<td class="text-center span">{{ $article->praise }}</td>
+							<td class="text-center span">未知</td>
+							<td>{{ $article->created_at }}</td>
 						</tr>
 					@endforeach
 				</tbody>

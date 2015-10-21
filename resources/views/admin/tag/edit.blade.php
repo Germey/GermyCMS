@@ -10,7 +10,7 @@
 					<h5>Form validation</h5>
 				</div>
 				<div class="widget-content nopadding">
-					<form class="form-horizontal" method="POST" action="{{ URL('admin/tag/'.$thisTag->id) }}" name="create_tag" id="create_tag" novalidate="novalidate">
+					<form class="form-horizontal" method="POST" action="{{ URL('admin/tag/'.$thisTag->id) }}">
 						<input type="hidden" name="_method" value="PUT">
 						<input type="hidden" name="_token" value="{{ csrf_token() }}">
 						<div class="control-group">

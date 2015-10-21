@@ -204,4 +204,3 @@ $('#stat6').sparkline(positive, {
 	spotRadius: 3,//Radius of all spot markers, In pixels (default: 1.5) - Integer
 	lineWidth: 2//In pixels (default: 1) - Integer
 });
-

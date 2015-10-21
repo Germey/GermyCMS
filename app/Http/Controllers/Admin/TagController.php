@@ -4,9 +4,21 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Model\Tag;
-use Redirect, Input, Auth;
+use Redirect, Input, Auth, Validator, View;
 
 class TagController extends Controller {
+
+
+	private $preView = 'admin.tag.';
+	
+	/**
+	 * Get Name of View
+	 *
+	 * @return ViewName
+	 */
+	public function getView($name) {
+		return $this->preView . $name;
+	}
 
 	/**
 	 * Display a listing of the resource.
@@ -14,7 +26,7 @@ class TagController extends Controller {
 	 * @return Response
 	 */
 	public function index() {
-		return view('admin.tag.index')->withTags(Tag::paginate(15));
+		return View::make($this->getView('index'))->withTags(Tag::paginate(15));
 	}
 
 	/**
@@ -23,7 +35,7 @@ class TagController extends Controller {
 	 * @return Response
 	 */
 	public function create() {
-		return view('admin.tag.create')->withTags(Tag::all());
+		return View::make($this->getView('create'))->withTags(Tag::all());
 	}
 
 	/**
@@ -32,19 +44,18 @@ class TagController extends Controller {
 	 * @return Response
 	 */
 	public function store(Request $request) {
-		$this->validate($request, [
+		$validator = Validator::make($request->all(),[	
 			'name' => 'required|max:255',
 			'parent' => 'required',
 		]);
+		if ($validator->fails()) {
+		    return Redirect::back()->withErrors($validator->errors());
+		}
 
-		$tag = new Tag;
-		$tag->name = Input::get('name');
-		$tag->parent = Input::get('parent');
-
-		if ($tag->save()) {
+		if (Tag::create($request->all())) {
 			return Redirect::to('admin/tag')->with('success','添加成功！');
 		} else {
-			return Redirect::back()->withInput()->with('errors','添加失败！');
+			return Redirect::back()->with('error','添加失败！');
 		}
 
 	}
@@ -66,7 +77,7 @@ class TagController extends Controller {
 	 * @return Response
 	 */
 	public function edit($id) {
-		return view('admin.tag.edit')->with("thisTag", Tag::find($id))->withTags(Tag::all());
+		return View::make($this->getView('edit'))->with("thisTag", Tag::find($id))->withTags(Tag::all());
 	}
 
 	/**
@@ -76,20 +87,19 @@ class TagController extends Controller {
 	 * @return Response
 	 */
 	public function update(Request $request, $id) {
-		$this->validate($request, [
-			'name' => 'required',
+		$validator = Validator::make($request->all(),[	
+			'name' => 'required|max:255',
 			'parent' => 'required',
 		]);
+		if ($validator->fails()) {
+		    return Redirect::back()->withErrors($validator->errors());
+		}
 
 		$tag = Tag::find($id);
-
-		$tag->name = Input::get('name');
-		$tag->parent = Input::get('parent');
-
-		if ($tag->save()) {
+		if ($tag->update($request->all())) {
 			return Redirect::to('admin/tag')->with('success','修改成功！');
 		} else {
-			return Redirect::back()->withInput->with('errors', '修改失败！');
+			return Redirect::back()->withInput->with('error', '修改失败！');
 		}
 
 	}
@@ -105,7 +115,7 @@ class TagController extends Controller {
 		if ($tag->delete()) {
 			return Redirect::to('admin/tag')->with('success','删除成功！');
 		} else {
-			return Redirect::to('admin/tag')->with('errors', '删除失败！');
+			return Redirect::to('admin/tag')->with('error', '删除失败！');
 		}
 
 	}

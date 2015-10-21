@@ -3,10 +3,22 @@
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Model\Article;
-use Redirect, Input, Auth;
+use Redirect, Input, Auth, Validator, View;
 use Illuminate\Http\Request;
 
 class ArticleController extends Controller {
+
+	
+	private $preView = 'admin.article.';
+	
+	/**
+	 * Get Name of View
+	 *
+	 * @return ViewName
+	 */
+	public function getView($name) {
+		return $this->preView . $name;
+	}
 
 	/**
 	 * Display a listing of the resource.
@@ -14,7 +26,7 @@ class ArticleController extends Controller {
 	 * @return Response
 	 */
 	public function index() {
-		return view('admin.article.index')->withArticles(Article::all());
+		return View::make($this->getView('index'))->withArticles(Article::all());
 	}
 
 	/**
@@ -23,7 +35,7 @@ class ArticleController extends Controller {
 	 * @return Response
 	 */
 	public function create() {
-		return view('admin.article.create');
+		return View::make($this->getView('create'));
 	}
 
 	/**
@@ -31,9 +43,23 @@ class ArticleController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store()
-	{
-		//
+	public function store(Request $request) {
+		$validator = Validator::make($request->all(),[	
+			'title' => 'required|max:40',
+			'subtitle' => 'required|max:80',
+			'summary' => 'required|max:300',
+			'content' => 'required',
+			'weight' => 'required|integer',
+			'allow_comment' => 'boolean',
+		]);
+		if ($validator->fails()) {
+		    return Redirect::back()->withErrors($validator->errors());
+		}
+		if ($article = Article::create($request->all())) {
+			return View::make($this->getView('edit'))->with('success','发布成功！')->withArticle($article);
+		} else {
+			return View::make($this->getView('create'))->with('error', '发布失败');
+		}
 	}
 
 	/**
@@ -42,8 +68,7 @@ class ArticleController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function show($id)
-	{
+	public function show($id) {
 		//
 	}
 
@@ -53,9 +78,8 @@ class ArticleController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function edit($id)
-	{
-		//
+	public function edit($id) {
+		return View::make($this->getView('edit'))->withArticle(Article::find($id));
 	}
 
 	/**
@@ -64,9 +88,24 @@ class ArticleController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id)
-	{
-		//
+	public function update(Request $request, $id) {
+		$validator = Validator::make($request->all(),[	
+			'title' => 'required|max:40',
+			'subtitle' => 'required|max:80',
+			'summary' => 'required|max:300',
+			'content' => 'required',
+			'weight' => 'required|integer',
+			'allow_comment' => 'boolean',
+		]);
+		if ($validator->fails()) {
+		    return View::make($this->getView('edit'))->withArticle(Article::find($id))->withErrors($validator->errors());
+		}
+		$article = Article::find($id);
+		if ($article->update($request->all())) {
+			return View::make($this->getView('edit'))->with('success','修改成功！')->withArticle(Article::find($id));
+		} else {
+			return View::make($this->getView('edit'))->with('error', '修改失败！')->withArticle(Article::find($id));
+		}
 	}
 
 	/**
@@ -75,9 +114,13 @@ class ArticleController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function destroy($id)
-	{
-		//
+	public function destroy($id) {
+		$article = Article::find($id);
+		if ($article->delete()) {
+			return Redirect::to('admin/article')->with('success','删除成功！');
+		} else {
+			return Redirect::to('admin/article')->with('error', '删除失败！');
+		}
 	}
 
 }
