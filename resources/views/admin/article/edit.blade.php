@@ -9,7 +9,7 @@
 					<h5>编辑文章</h5>
 				</div>
 				<div class="widget-content nopadding">
-					<form class="form-horizontal" method="post" action="{{ URL('admin/article/'.$article->id) }}">
+					<form class="form-horizontal" method="post" action="{{ URL('admin/article/'.$article->id) }}" id="edit_article">
 						<input type="hidden" name="_method" value="PUT">
 						<input type="hidden" name="_token" value="{{ csrf_token() }}">
 						<div class="control-group">
@@ -65,5 +65,6 @@
 </div>
 <script src="{{ asset('js/wysihtml5-0.3.0.js') }}"></script>
 <script src="{{ asset('js/bootstrap-wysihtml5.js') }}"></script>
-
+<script src="{{ asset('js/jquery.validate.js') }}"></script>
+<script src="{{ asset('js/matrix.form_validation.js') }}"></script>
 @endsection

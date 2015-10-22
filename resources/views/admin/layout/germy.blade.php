@@ -12,6 +12,7 @@
 		<link href="{{ asset('font-awesome/css/font-awesome.css') }}" rel="stylesheet" />
 		<link rel="stylesheet" href="{{ asset('css/jquery.gritter.css') }}" />
 		<link rel="stylesheet" href="{{ asset('css/bootstrap-wysihtml5.css') }}" />
+		<link rel="stylesheet" href="{{ asset('css/select2.css') }}" />
 		<link rel="stylesheet" href="{{ asset('css/germy.css') }}" />
 		<script src="{{ asset('js/jquery.min.js') }}"></script>
 		<script src="{{ asset('js/jquery.ui.custom.js') }}"></script>

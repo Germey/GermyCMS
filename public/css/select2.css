@@ -26,7 +26,12 @@ Version: 3.2 Timestamp: Mon Sep 10 10:38:04 PDT 2012
   -khtml-box-sizing: border-box;  /* konqueror */
   box-sizing: border-box;         /* css3 */
 }
-
+.select2-container .select2-choice {
+    width: 210px;
+}
+.select2-drop {
+    width: 220px !important;
+}
 .select2-container .select2-choice {
     background-color: #fff;
 

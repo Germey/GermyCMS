@@ -28,9 +28,12 @@
 								</select>
 							</div>
 			            </div>
-						
-						<input type="submit" class="btn btn-lg btn-info" value="新增">
-						
+						<div class="control-group">
+							<label class="control-label">新增</label>
+							<div class="controls">
+								<input type="submit" class="btn btn-lg btn-info" value="新增">
+							</div>
+						</div>
 					</form>
 				</div>
 			</div>

@@ -10,7 +10,7 @@
 					<h5>Form validation</h5>
 				</div>
 				<div class="widget-content nopadding">
-					<form class="form-horizontal" method="POST" action="{{ URL('admin/tag/'.$thisTag->id) }}">
+					<form class="form-horizontal" method="POST" action="{{ URL('admin/tag/'.$thisTag->id) }}" id="edit_tag">
 						<input type="hidden" name="_method" value="PUT">
 						<input type="hidden" name="_token" value="{{ csrf_token() }}">
 						<div class="control-group">
@@ -33,8 +33,11 @@
 								</select>
 							</div>
 			            </div>
-						<div class="form-actions">
-							<button class="btn btn-lg btn-info">提交</button>
+						<div class="control-group">
+							<label class="control-label">修改</label>
+							<div class="controls">
+								<input type="submit" class="btn btn-lg btn-info" value="提交">
+							</div>
 						</div>
 					</form>
 				</div>
@@ -42,5 +45,8 @@
 		</div>
     </div>
 </div>
-
+<script src="{{ asset('js/jquery.uniform.js') }}"></script>
+<script src="{{ asset('js/select2.min.js') }}"></script>
+<script src="{{ asset('js/jquery.validate.js') }}"></script>
+<script src="{{ asset('js/matrix.form_validation.js') }}"></script>
 @endsection
