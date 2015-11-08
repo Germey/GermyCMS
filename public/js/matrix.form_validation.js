@@ -55,6 +55,9 @@ $(document).ready(function() {
             weight: {
                 required: true,
                 digits: true
+            },
+            allow_comment: {
+                required: true
             }
         },
         errorClass: "help-inline",

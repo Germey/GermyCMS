@@ -9,6 +9,10 @@
 					<h5>编辑文章</h5>
 				</div>
 				<div class="widget-content nopadding">
+					{!! Form::model($article, ['url' => URL('admin/article/'.$article->id), 'class' => 'form-horizontal', 'method' => 'PUT', 'id' => 'edit_article']) !!}
+						@include('admin.article.form', ['buttonName' => '修改', 'allowComment' => null])
+					{!! Form::close() !!}
+					<!--
 					<form class="form-horizontal" method="post" action="{{ URL('admin/article/'.$article->id) }}" id="edit_article">
 						<input type="hidden" name="_method" value="PUT">
 						<input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -58,6 +62,7 @@
 							</div>
 						</div>
 					</form>
+					-->
 				</div>
 			</div>
 		</div>
