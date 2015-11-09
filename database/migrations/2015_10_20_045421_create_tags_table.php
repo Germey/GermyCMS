@@ -17,6 +17,8 @@ class CreateTagsTable extends Migration {
 			$table->increments('id');
 			$table->string('name');
 			$table->integer('parent')->default(0);
+			$table->integer('editable')->default(1);
+			$table->integer('deletable')->default(1);
 			$table->timestamps();
 		});
 	}

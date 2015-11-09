@@ -15,7 +15,7 @@ class TagTableSeeder extends Seeder {
 		DB::table('tags')->delete();
 
 		$array = array(
-			array("顶级标签", 0),
+			array("顶级标签", 0, 0, 0),
 			array("演员", 0),
 			array("编导", 0),
 			array("摄影", 0),
@@ -75,6 +75,8 @@ class TagTableSeeder extends Seeder {
 				'id' => $count,
 				'name' => $item[0],
 				'parent' => $item[1],
+				'editable' => count($item)>2?$item[2]:1,
+				'deletable' => count($item)>3?$item[3]:1,
 			]);
 			$count += 1;
 		}

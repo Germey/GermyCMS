@@ -13,6 +13,14 @@ class TagController extends Controller {
     private $preView = 'admin.tag.';
 
     /**
+     * Construct method
+     */
+    public function __construct() {
+        $this->middleware('tag', ['only' => ['edit', 'destroy']]);
+    }
+
+
+    /**
      * Get Name of View
      *
      * @return ViewName
