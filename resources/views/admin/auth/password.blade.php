@@ -1,6 +1,28 @@
-@extends('app')
+@extends('admin.layout.auth')
 
 @section('content')
+	<div id="login-box">
+		{!! Form::open(['url' => URL('/admin/password/email'), 'role' => 'form', 'class' => 'form-vertical', 'id' => 'login-form']) !!}
+		<div class="control-group normal_text"> <h3><img src="{{ asset('img/logo.png') }}" alt="Logo" /></h3></div>
+		<div class="control-group">
+			<div class="controls">
+				<div class="main_input_box">
+					<span class="add-on bg_lo"><i class="icon-envelope"></i></span>
+					{!! Form::email('email', old('email'), ['placeholder' => '邮箱']) !!}
+				</div>
+			</div>
+		</div>
+		<div class="form-actions">
+				<span class="pull-left">
+					<a href="{{ url('/admin/auth/login') }}" class="flip-link btn btn-success">重新登录</a>
+				</span>
+				<span class="pull-right">
+					{!! Form::submit('发送', ['class' => 'btn btn-info']) !!}
+				</span>
+		</div>
+		{!! Form::close() !!}
+	</div>
+<!--
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-8 col-md-offset-2">
@@ -47,4 +69,5 @@
 		</div>
 	</div>
 </div>
+-->
 @endsection

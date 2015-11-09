@@ -3,7 +3,7 @@
 use App\Http\Controllers\Controller;
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Contracts\Auth\PasswordBroker;
-use Illuminate\Foundation\Auth\ResetsPasswords;
+use App\Foundations\AdminResetsPasswords;
 
 class PasswordController extends Controller {
 
@@ -18,7 +18,7 @@ class PasswordController extends Controller {
     |
     */
 
-    use ResetsPasswords;
+    use AdminResetsPasswords;
 
     /**
      * Create a new password controller instance.

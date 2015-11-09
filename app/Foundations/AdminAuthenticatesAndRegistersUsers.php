@@ -76,8 +76,8 @@ trait AdminAuthenticatesAndRegistersUsers {
         }
 
         return redirect($this->loginPath())->withInput($request->only('email', 'remember'))->withErrors([
-                'email' => $this->getFailedLoginMessage(),
-            ]);
+            'email' => $this->getFailedLoginMessage(),
+        ]);
     }
 
     /**
