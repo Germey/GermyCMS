@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 	<head>
 		<title>Germy CMS</title>
 		<meta charset="UTF-8" />

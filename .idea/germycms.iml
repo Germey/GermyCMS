@@ -3,6 +3,7 @@
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$/../admin" />
     <content url="file://$MODULE_DIR$" />
+    <content url="file://$MODULE_DIR$/../hwby" />
     <content url="file://$MODULE_DIR$/../learnlaravel5" />
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
