@@ -2,6 +2,7 @@
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\TagRequest;
 use Illuminate\Http\Request;
 use App\Model\Tag;
 use Redirect, Input, Auth, Validator, View;
@@ -41,21 +42,14 @@ class TagController extends Controller {
     /**
      * Store a newly created resource in storage.
      *
+     * @param TagRequest $request
      * @return Response
      */
-    public function store(Request $request) {
-        $validator = Validator::make($request->all(), [
-            'name' => 'required|max:255',
-            'parent' => 'required',
-        ]);
-        if ($validator->fails()) {
-            return Redirect::back()->withErrors($validator->errors());
-        }
-
+    public function store(TagRequest $request) {
         if (Tag::create($request->all())) {
             return Redirect::to('admin/tag')->with('success', '添加成功！');
         } else {
-            return Redirect::back()->with('error', '添加失败！');
+            return Redirect::back()->withInput()->with('error', '添加失败！');
         }
 
     }
@@ -86,20 +80,12 @@ class TagController extends Controller {
      * @param  int $id
      * @return Response
      */
-    public function update(Request $request, $id) {
-        $validator = Validator::make($request->all(), [
-            'name' => 'required|max:255',
-            'parent' => 'required',
-        ]);
-        if ($validator->fails()) {
-            return Redirect::back()->withErrors($validator->errors());
-        }
-
+    public function update(TagRequest $request, $id) {
         $tag = Tag::find($id);
         if ($tag->update($request->all())) {
             return Redirect::to('admin/tag')->with('success', '修改成功！');
         } else {
-            return Redirect::back()->withInput->with('error', '修改失败！');
+            return Redirect::back()->withInput()->with('error', '修改失败！');
         }
 
     }

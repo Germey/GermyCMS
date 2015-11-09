@@ -2,9 +2,11 @@
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ArticleRequest;
 use App\Model\Article;
 use Redirect, Input, Auth, Validator, View;
 use Illuminate\Http\Request;
+
 
 class ArticleController extends Controller {
 
@@ -12,9 +14,10 @@ class ArticleController extends Controller {
     private $preView = 'admin.article.';
 
     /**
-     * Get Name of View
+     * Get view name by name
      *
-     * @return ViewName
+     * @param $name
+     * @return string
      */
     public function getView($name) {
         return $this->preView . $name;
@@ -41,24 +44,14 @@ class ArticleController extends Controller {
     /**
      * Store a newly created resource in storage.
      *
+     * @param ArticleRequest $request
      * @return Response
      */
-    public function store(Request $request) {
-        $validator = Validator::make($request->all(), [
-            'title' => 'required|max:40',
-            'subtitle' => 'required|max:80',
-            'summary' => 'required|max:300',
-            'content' => 'required',
-            'weight' => 'required|integer',
-            'allow_comment' => 'boolean',
-        ]);
-        if ($validator->fails()) {
-            return Redirect::back()->withErrors($validator->errors());
-        }
+    public function store(ArticleRequest $request) {
         if ($article = Article::create($request->all())) {
             return View::make($this->getView('edit'))->with('success', '发布成功！')->withArticle($article);
         } else {
-            return View::make($this->getView('create'))->with('error', '发布失败');
+            return Redirect::back()->withInput()->with('error', '发布失败');
         }
     }
 
@@ -88,23 +81,12 @@ class ArticleController extends Controller {
      * @param  int $id
      * @return Response
      */
-    public function update(Request $request, $id) {
-        $validator = Validator::make($request->all(), [
-            'title' => 'required|max:40',
-            'subtitle' => 'required|max:80',
-            'summary' => 'required|max:300',
-            'content' => 'required',
-            'weight' => 'required|integer',
-            'allow_comment' => 'boolean',
-        ]);
-        if ($validator->fails()) {
-            return View::make($this->getView('edit'))->withArticle(Article::find($id))->withErrors($validator->errors());
-        }
+    public function update(ArticleRequest $request, $id) {
         $article = Article::find($id);
         if ($article->update($request->all())) {
-            return View::make($this->getView('edit'))->with('success', '修改成功！')->withArticle(Article::find($id));
+            return View::make($this->getView('edit'))->with('success', '修改成功！')->withArticle($article);
         } else {
-            return View::make($this->getView('edit'))->with('error', '修改失败！')->withArticle(Article::find($id));
+            return Redirect::back()->withInput()->with('error', '修改失败！');
         }
     }
 

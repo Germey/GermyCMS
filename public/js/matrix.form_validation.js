@@ -71,11 +71,11 @@ $(document).ready(function() {
         }
     }
 
-    $("#create_tag").validate(tag_rules);
-    $("#edit_tag").validate(tag_rules);
+    //$("#create_tag").validate(tag_rules);
+    //$("#edit_tag").validate(tag_rules);
 
 
-    $("#create_article").validate(article_rules);
-    $("#edit_article").validate(article_rules);
+    //$("#create_article").validate(article_rules);
+    //$("#edit_article").validate(article_rules);
 
 });

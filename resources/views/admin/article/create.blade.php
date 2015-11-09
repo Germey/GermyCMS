@@ -10,7 +10,7 @@
                     </div>
                     <div class="widget-content nopadding">
                         {!! Form::open(['url' => URL('admin/article'), 'class' => 'form-horizontal', 'id' => 'create_article']) !!}
-							@include('admin.article.form', ['buttonName' => '新增', 'allowComment' => '1'])
+                            @include('admin.article.form', ['buttonName' => '新增', 'allowComment' => '1'])
                         {!! Form::close() !!}
                     </div>
                 </div>
