@@ -7,6 +7,14 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller {
 
+
+    /**
+     * Construct method to auth middleware
+     */
+    public function __construct() {
+        $this->middleware("auth.admin");
+    }
+
     /**
      * Display a listing of the resource.
      *

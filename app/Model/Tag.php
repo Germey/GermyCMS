@@ -9,10 +9,20 @@ class Tag extends Model {
 	/**
 	 * Get parent tag
 	 *
-	 * @return \Illuminate\Database\Eloquent\Relations\HasOne
+	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
 	public function getParent() {
-		return $this->hasOne($this, 'id', 'parent');
+		return $this->belongsTo($this, 'parent', 'id');
+	}
+
+
+	/**
+	 * Get children tag
+	 *
+	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+	public function getChildren() {
+		return $this->hasMany($this, 'parent', 'id');
 	}
 
 	/**
@@ -31,6 +41,9 @@ class Tag extends Model {
 	 * @return $this|bool|\Carbon\Carbon|\DateTime|mixed|static
      */
 	public function deletable() {
+		if ($this->getChildren()->get()->toArray()) {
+			return false;
+		}
 		return $this->getAttribute('deletable');
 	}
 
