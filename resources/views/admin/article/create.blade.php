@@ -21,4 +21,5 @@
     <script src="{{ asset('js/bootstrap-wysihtml5.js') }}"></script>
     <script src="{{ asset('js/jquery.validate.js') }}"></script>
     <script src="{{ asset('js/matrix.form_validation.js') }}"></script>
+    <script src="{{ asset('js/germy.article.js') }}"></script>
 @endsection

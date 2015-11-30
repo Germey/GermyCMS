@@ -3,8 +3,7 @@
 @section('content')
 	<div id="content">
 		@include('admin.public.breadcrumb')
-		@include('admin.public.errors')
-		@include('admin.public.success')
+		@include('admin.public.alert')
 		@yield('main')
 	</div>
 @endsection

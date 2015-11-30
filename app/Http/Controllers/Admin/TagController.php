@@ -5,7 +5,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\TagRequest;
 use Illuminate\Http\Request;
 use App\Model\Tag;
-use Redirect, Input, Auth, Validator, View, Session;
+use Redirect, Input, Auth, Validator, View, Flash;
 
 class TagController extends Controller {
 
@@ -55,10 +55,10 @@ class TagController extends Controller {
      */
     public function store(TagRequest $request) {
         if (Tag::create($request->all())) {
-            Session::flash('success', '添加成功！');
+            Flash::success('添加成功！');
             return Redirect::to('admin/tag');
         } else {
-            Session::flash('error', '添加失败！');
+            Flash::error('添加失败！');
             return Redirect::back()->withInput();
         }
 
@@ -92,10 +92,10 @@ class TagController extends Controller {
      */
     public function update(TagRequest $request, Tag $tag) {
         if ($tag->update($request->all())) {
-            Session::flash('success', '修改成功！');
+            Flash::success('修改成功！');
             return Redirect::to('admin/tag');
         } else {
-            Session::flash('error', '修改失败！');
+            Flash::error('修改失败！');
             return Redirect::back()->withInput();
         }
 
@@ -109,10 +109,10 @@ class TagController extends Controller {
      */
     public function destroy(Tag $tag) {
         if ($tag->delete()) {
-            Session::flash('success', '删除失败！');
+            Flash::success('删除失败！');
             return Redirect::to('admin/tag');
         } else {
-            Session::flash('error', '删除失败！');
+            Flash::error('删除失败！');
             return Redirect::to('admin/tag');
         }
 

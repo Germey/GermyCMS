@@ -1,7 +1,7 @@
 <?php namespace App\Http\Middleware;
 
 use App\Model\Tag;
-use Closure, Redirect;
+use Closure, Redirect, Flash;
 
 
 class TagMiddleware extends BaseMiddleware {
@@ -18,10 +18,12 @@ class TagMiddleware extends BaseMiddleware {
         $method = $this->getActionMethod($request);
         $tag = $request->route()->getParameter('tag');
         if ($method == 'edit' && !$tag->editable()) {
-            return Redirect::back()->with("error", "该标签不能被编辑");
+            Flash::error('该标签不能被编辑！');
+            return Redirect::back();
         }
         if ($method == 'destroy' && !$tag->deletable()) {
-            return Redirect::back()->with("error", "该标签不能被删除");
+            Flash::error('该标签不能被删除！');
+            return Redirect::back();
         }
 
         return $next($request);
