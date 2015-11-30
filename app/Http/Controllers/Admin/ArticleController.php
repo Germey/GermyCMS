@@ -4,7 +4,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ArticleRequest;
 use App\Model\Article;
-use Redirect, Input, Auth, Validator, View;
+use Redirect, Input, Auth, Validator, View, Session;
 use Illuminate\Http\Request;
 
 
@@ -49,9 +49,11 @@ class ArticleController extends Controller {
      */
     public function store(ArticleRequest $request) {
         if ($article = Article::create($request->all())) {
-            return View::make($this->getView('edit'))->with('success', '发布成功！')->withArticle($article);
+            Session::flash('success', '发布成功！');
+            return View::make($this->getView('edit'))->withArticle($article);
         } else {
-            return Redirect::back()->withInput()->with('error', '发布失败');
+            Session::flash('error', '发布失败！');
+            return Redirect::back()->withInput();
         }
     }
 
@@ -83,9 +85,11 @@ class ArticleController extends Controller {
      */
     public function update(ArticleRequest $request, Article $article) {
         if ($article->update($request->all())) {
-            return View::make($this->getView('edit'))->with('success', '修改成功！')->withArticle($article);
+            Session::flash('success', '修改成功！');
+            return View::make($this->getView('edit'))->withArticle($article);
         } else {
-            return Redirect::back()->withInput()->with('error', '修改失败！');
+            Session::flash('error', '修改失败！');
+            return Redirect::back()->withInput();
         }
     }
 
@@ -97,9 +101,11 @@ class ArticleController extends Controller {
      */
     public function destroy(Article $article) {
         if ($article->delete()) {
-            return Redirect::to('admin/article')->with('success', '删除成功！');
+            Session::flash('success', '删除成功！');
+            return Redirect::to('admin/article');
         } else {
-            return Redirect::to('admin/article')->with('error', '删除失败！');
+            Session::flash('error', '删除失败！');
+            return Redirect::to('admin/article');
         }
     }
 

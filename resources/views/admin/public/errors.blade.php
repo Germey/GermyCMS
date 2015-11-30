@@ -1,14 +1,8 @@
-@if (@$error)
+@if (Session::has('error'))
 	<div class="alert alert-error">
 		<button class="close" data-dismiss="alert">×</button>
 		<h5 class="alert-heading">Error!</h5>
-		{{ @$error }}
-	</div>
-@elseif (session('error'))
-	<div class="alert alert-error">
-		<button class="close" data-dismiss="alert">×</button>
-		<h5 class="alert-heading">Error!</h5>
-		{{ session('error') }}
+		{{ Session::get('error') }}
 	</div>
 @endif
 @if (count($errors) > 0)

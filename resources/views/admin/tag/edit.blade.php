@@ -10,7 +10,7 @@
 					<h5>Form validation</h5>
 				</div>
 				<div class="widget-content nopadding">
-					{!! Form::open(['url' => URL('admin/tag/'.$thisTag->id), 'id' => 'edit_tag', 'method' => 'PUT', 'class' => 'form-horizontal']) !!}
+					{!! Form::model($thisTag, ['url' => URL('admin/tag/'.$thisTag->id), 'id' => 'edit_tag', 'method' => 'PUT', 'class' => 'form-horizontal']) !!}
 						@include('admin.tag.form', ['submitName' => '修改', 'parent' => $thisTag->getParent])
 					{!! Form::close() !!}
 				</div>

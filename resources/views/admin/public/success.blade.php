@@ -1,13 +1,7 @@
-@if (@$success)
+@if (Session::has('success'))
 	<div class="alert alert-success">
 		<button class="close" data-dismiss="alert">×</button>
 		<h5 class="alert-heading">Success!</h5>
-		{{ @$success }}
-	</div>
-@elseif (session('success'))
-	<div class="alert alert-success">
-		<button class="close" data-dismiss="alert">×</button>
-		<h5 class="alert-heading">Success!</h5>
-		{{ session('success')}}
+		{{ Session::get('success') }}
 	</div>
 @endif
