@@ -48,7 +48,8 @@ class ArticleController extends Controller {
      * @return Response
      */
     public function store(ArticleRequest $request) {
-        if ($article = Article::create($request->all())) {
+        $article = new Article($request->all());
+        if ($article = Auth::user()->articles()->save($article)) {
             Flash::success('发布成功！');
             return View::make($this->getView('edit'))->withArticle($article);
         } else {
