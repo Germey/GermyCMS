@@ -43,3 +43,9 @@
         {!! Form::submit($buttonName, ['class' => 'btn btn-primary']) !!}
     </div>
 </div>
+<div class="control-group">
+    {!! Form::label('content', '标签', ['class' => 'control-label']) !!}
+    <div class="controls">
+        {!! Form::select('tagList[]', $tags->lists('name', 'id'), null, ['class' => 'form-control', 'multiple' => 'multiple']) !!}
+    </div>
+</div>

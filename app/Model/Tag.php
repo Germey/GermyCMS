@@ -47,4 +47,17 @@ class Tag extends Model {
 		return $this->getAttribute('deletable');
 	}
 
+
+	/**
+	 * Return articles the tag associated
+	 *
+	 * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+	public function articles() {
+		return $this->belongsToMany('App\Model\Article');
+	}
+
+
+
+
 }

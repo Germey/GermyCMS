@@ -29,16 +29,15 @@
     Route::model('tag', 'App\Model\Tag');
 
 
-
     /* 后台管理 */
-    Route::group(['prefix' => 'admin', 'middleware' => 'auth.admin', 'namespace' => 'Admin'], function() {
+    Route::group(['prefix' => 'admin', 'middleware' => 'auth.admin', 'namespace' => 'Admin'], function () {
         Route::get('/', 'HomeController@index');
         Route::resource('tag', 'TagController');
         Route::resource('article', 'ArticleController');
     });
 
     /* 后台权限 */
-    Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function() {
+    Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
         Route::controllers([
             'auth' => 'AuthController',
             'password' => 'PasswordController',

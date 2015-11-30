@@ -24,6 +24,7 @@ class CreateArticlesTable extends Migration {
 			$table->string('source')->nullable();
 			$table->string('source_link')->nullable();
 			$table->integer('user_id')->unsigned();
+			$table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
 			$table->integer('category_id')->default(0);
 			$table->integer('parent_id')->default(0);
 			$table->integer('weight')->default(0);
@@ -31,7 +32,6 @@ class CreateArticlesTable extends Migration {
 			$table->integer('allow_comment')->default(1);
 			$table->integer('pv')->default(0);
 			$table->integer('praise')->default(0);
-			$table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
 			$table->timestamps();
 		});
 	}
