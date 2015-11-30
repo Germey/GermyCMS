@@ -50,7 +50,7 @@ class ArticleController extends Controller {
      */
     public function store(ArticleRequest $request) {
         if ($article = Auth::user()->articles()->create($request->all())) {
-            $article->tags()->attach($request->input('tagList'));
+            $article->tags()->attach($request->input('tag_list'));
             Flash::success('发布成功！');
             return View::make($this->getView('edit'))->withArticle($article)->withTags(Tag::all());
         } else {
@@ -87,7 +87,7 @@ class ArticleController extends Controller {
      */
     public function update(ArticleRequest $request, Article $article) {
         if ($article->update($request->all())) {
-            $article->tags()->attach($request->input('tagList'));
+            $article->tags()->attach($request->input('tag_list'));
             Flash::success('修改成功！');
             return View::make($this->getView('edit'))->withArticle($article)->withTags(Tag::all());
         } else {

@@ -25,7 +25,7 @@ class ArticleRequest extends Request {
             'summary' => 'required|max:300',
             'content' => 'required',
             'weight' => 'required|integer',
-            'allow_comment' => 'boolean',
+            'allow_comment' => 'required|boolean',
         ];
     }
 

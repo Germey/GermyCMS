@@ -10,7 +10,7 @@
 				</div>
 				<div class="widget-content nopadding">
 					{!! Form::model($article, ['url' => URL('admin/article/'.$article->id), 'class' => 'form-horizontal', 'method' => 'PUT', 'id' => 'edit_article']) !!}
-						@include('admin.article.form', ['buttonName' => '修改', 'allowComment' => null])
+						@include('admin.article.form', ['buttonName' => '修改'])
 					{!! Form::close() !!}
                     @if ($article->tags)
                         @foreach ($article->tags as $tag)
