@@ -16,8 +16,7 @@ class TagMiddleware extends BaseMiddleware {
     public function handle($request, Closure $next) {
 
         $method = $this->getActionMethod($request);
-        $id = $request->route()->getParameter('tag');
-        $tag = Tag::find($id);
+        $tag = $request->route()->getParameter('tag');
         if ($method == 'edit' && !$tag->editable()) {
             return Redirect::back()->with("error", "该标签不能被编辑");
         }

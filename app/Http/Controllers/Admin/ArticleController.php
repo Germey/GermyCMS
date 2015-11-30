@@ -61,8 +61,8 @@ class ArticleController extends Controller {
      * @param  int $id
      * @return Response
      */
-    public function show($id) {
-        //
+    public function show(Article $article) {
+
     }
 
     /**
@@ -71,8 +71,8 @@ class ArticleController extends Controller {
      * @param  int $id
      * @return Response
      */
-    public function edit($id) {
-        return View::make($this->getView('edit'))->withArticle(Article::find($id));
+    public function edit(Article $article) {
+        return View::make($this->getView('edit'))->withArticle($article);
     }
 
     /**
@@ -81,8 +81,7 @@ class ArticleController extends Controller {
      * @param  int $id
      * @return Response
      */
-    public function update(ArticleRequest $request, $id) {
-        $article = Article::find($id);
+    public function update(ArticleRequest $request, Article $article) {
         if ($article->update($request->all())) {
             return View::make($this->getView('edit'))->with('success', '修改成功！')->withArticle($article);
         } else {
@@ -96,8 +95,7 @@ class ArticleController extends Controller {
      * @param  int $id
      * @return Response
      */
-    public function destroy($id) {
-        $article = Article::find($id);
+    public function destroy(Article $article) {
         if ($article->delete()) {
             return Redirect::to('admin/article')->with('success', '删除成功！');
         } else {

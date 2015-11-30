@@ -68,7 +68,7 @@ class TagController extends Controller {
      * @param  int $id
      * @return Response
      */
-    public function show($id) {
+    public function show(Tag $tag) {
         //
     }
 
@@ -78,8 +78,8 @@ class TagController extends Controller {
      * @param  int $id
      * @return Response
      */
-    public function edit($id) {
-        return View::make($this->getView('edit'))->with("thisTag", Tag::find($id))->withTags(Tag::all());
+    public function edit(Tag $tag) {
+        return View::make($this->getView('edit'))->with("thisTag", $tag)->withTags(Tag::all());
     }
 
     /**
@@ -88,8 +88,7 @@ class TagController extends Controller {
      * @param  int $id
      * @return Response
      */
-    public function update(TagRequest $request, $id) {
-        $tag = Tag::find($id);
+    public function update(TagRequest $request, Tag $tag) {
         if ($tag->update($request->all())) {
             return Redirect::to('admin/tag')->with('success', '修改成功！');
         } else {
@@ -104,8 +103,7 @@ class TagController extends Controller {
      * @param  int $id
      * @return Response
      */
-    public function destroy($id) {
-        $tag = Tag::find($id);
+    public function destroy(Tag $tag) {
         if ($tag->delete()) {
             return Redirect::to('admin/tag')->with('success', '删除成功！');
         } else {

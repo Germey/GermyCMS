@@ -8,7 +8,7 @@
 	<div class="alert alert-error">
 		<button class="close" data-dismiss="alert">×</button>
 		<h5 class="alert-heading">Error!</h5>
-		{{ session('error')}}
+		{{ session('error') }}
 	</div>
 @endif
 @if (count($errors) > 0)
