@@ -9,7 +9,7 @@
 		<link rel="stylesheet" href="{{ asset('css/fullcalendar.css') }}" />
 		<link rel="stylesheet" href="{{ asset('css/matrix-style.css') }}" />
 		<link rel="stylesheet" href="{{ asset('css/matrix-media.css') }}" />
-		<link href="{{ asset('font-awesome/css/font-awesome.css') }}" rel="stylesheet" />
+		<link rel="stylesheet" href="{{ asset('font-awesome/css/font-awesome.css') }}" />
 		<link rel="stylesheet" href="{{ asset('css/jquery.gritter.css') }}" />
 		<link rel="stylesheet" href="{{ asset('css/bootstrap-wysihtml5.css') }}" />
 		<link rel="stylesheet" href="{{ asset('css/select2.css') }}" />

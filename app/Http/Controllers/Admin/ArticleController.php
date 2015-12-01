@@ -15,6 +15,14 @@ class ArticleController extends Controller {
     private $preView = 'admin.article.';
 
     /**
+     * ArticleController constructor.
+     */
+    public function __construct() {
+        $this->middleware('article', ['only' => ['store', 'update']]);
+    }
+
+
+    /**
      * Get view name by name
      *
      * @param $name
@@ -49,8 +57,7 @@ class ArticleController extends Controller {
      * @return Response
      */
     public function store(ArticleRequest $request) {
-        if ($article = Auth::user()->articles()->create($request->all())) {
-            $article->tags()->attach($request->input('tag_list'));
+        if ($article = $this->createArticle($request)) {
             Flash::success('发布成功！');
             return View::make($this->getView('edit'))->withArticle($article)->withTags(Tag::all());
         } else {
@@ -86,8 +93,7 @@ class ArticleController extends Controller {
      * @return Response
      */
     public function update(ArticleRequest $request, Article $article) {
-        if ($article->update($request->all())) {
-            $article->tags()->attach($request->input('tag_list'));
+        if ($article = $this->updateArticle($request, $article)) {
             Flash::success('修改成功！');
             return View::make($this->getView('edit'))->withArticle($article)->withTags(Tag::all());
         } else {
@@ -111,5 +117,43 @@ class ArticleController extends Controller {
             return Redirect::to('admin/article');
         }
     }
+
+    /**
+     * sync all tags.
+     *
+     * @param ArticleRequest $request
+     * @param Article $article
+     */
+    private function syncTags(Article $article, array $tags) {
+        $article->tags()->sync($tags);
+    }
+
+
+    /**
+     * Create article method.
+     *
+     * @param ArticleRequest $request
+     * @return mixed
+     */
+    private function createArticle(ArticleRequest $request) {
+        $article = Auth::user()->articles()->create($request->all());
+        $this->syncTags($article, $request->input('tag_list', []));
+        return $article;
+    }
+
+
+    /**
+     * Update article method.
+     *
+     * @param ArticleRequest $request
+     * @param Article $article
+     * @return Article
+     */
+    private function updateArticle(ArticleRequest $request, Article $article) {
+        $article->update($request->all());
+        $this->syncTags($article, $request->input('tag_list', []));
+        return $article;
+    }
+
 
 }

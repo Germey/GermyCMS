@@ -7,7 +7,7 @@
 			<div class="widget-box">
 				<div class="widget-title"> 
 					<span class="icon"> <i class="icon-info-sign"></i> </span>
-					<h5>Form validation</h5>
+					<h5>编辑标签</h5>
 				</div>
 				<div class="widget-content nopadding">
 					{!! Form::model($thisTag, ['url' => URL('admin/tag/'.$thisTag->id), 'id' => 'edit_tag', 'method' => 'PUT', 'class' => 'form-horizontal']) !!}
@@ -22,4 +22,6 @@
 <script src="{{ asset('js/select2.min.js') }}"></script>
 <script src="{{ asset('js/jquery.validate.js') }}"></script>
 <script src="{{ asset('js/matrix.form_validation.js') }}"></script>
+<script src="{{ asset('js/germy.tag.js') }}"></script>
+
 @endsection

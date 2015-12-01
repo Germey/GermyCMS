@@ -7,7 +7,7 @@
 <div class="control-group">
     {!! Form::label('parent', '父标签', ['class' => 'control-label']) !!}
     <div class="controls">
-        {!! Form::select('parent', $tags->lists('name', 'id'), $parent['id']) !!}
+        {!! Form::select('parent', $tags->lists('name', 'id'), $parent['id'], ['id' => 'tag-parent']) !!}
     </div>
 </div>
 <div class="control-group">

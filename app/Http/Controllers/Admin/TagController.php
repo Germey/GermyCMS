@@ -5,7 +5,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\TagRequest;
 use Illuminate\Http\Request;
 use App\Model\Tag;
-use Redirect, Input, Auth, Validator, View, Flash;
+use Redirect, Input, Auth, Validator, View, Flash, DB;
 
 class TagController extends Controller {
 
@@ -109,12 +109,38 @@ class TagController extends Controller {
      */
     public function destroy(Tag $tag) {
         if ($tag->delete()) {
-            Flash::success('删除失败！');
-            return Redirect::to('admin/tag');
+            Flash::success('删除成功！');
+            return Redirect::back();
         } else {
             Flash::error('删除失败！');
-            return Redirect::to('admin/tag');
+            return Redirect::back();
         }
+
+    }
+
+
+    /**
+     * Get all tags by ajax.
+     *
+     * @echo json
+     */
+    public function ajaxGetTags() {
+        $tags = DB::table('tags')->select('id', 'name as text')->get();
+        echo json_encode(['results' => $tags]);
+    }
+
+
+    /**
+     * Add some new tags by ajax.
+     *
+     * @param Request $request
+     */
+    public function ajaxAddTags(Request $request) {
+        $newTags = $request->input('new_tags', []);
+        foreach ($newTags as $newTag) {
+            $tag = Tag::firstOrCreate(['name' => $newTag]);
+        }
+        echo "添加成功！";
 
     }
 

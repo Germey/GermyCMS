@@ -39,13 +39,23 @@
     </div>
 </div>
 <div class="control-group">
+    {!! Form::label('content', '标签', ['class' => 'control-label']) !!}
     <div class="controls">
-        {!! Form::submit($buttonName, ['class' => 'btn btn-primary']) !!}
+        {!! Form::select('tag_list[]', $tags->lists('name', 'id'), null, ['id' => 'tag-list', 'class' => 'form-control', 'multiple' => 'multiple']) !!}
+        <span href="#add-tags-panel" class="slide-up-down inline"><span>新增标签</span><span>收起</span></span>
+    </div>
+</div>
+<div class="control-group" id="add-tags-panel" style="display: none">
+    {!! Form::label('content', '新增标签', ['class' => 'control-label']) !!}
+    <div class="controls">
+        {!! Form::select('new_tags[]', [], null, ['id' => 'new-tags', 'class' => 'form-control', 'multiple' => 'multiple']) !!}
+    </div>
+    <div class="controls">
+        {!! Form::button('新增标签', ['id' => 'add-tags', 'class' => 'btn btn-primary']) !!}
     </div>
 </div>
 <div class="control-group">
-    {!! Form::label('content', '标签', ['class' => 'control-label']) !!}
     <div class="controls">
-        {!! Form::select('tag_list[]', $tags->lists('name', 'id'), null, ['class' => 'form-control', 'multiple' => 'multiple']) !!}
+        {!! Form::submit($buttonName, ['class' => 'btn btn-primary']) !!}
     </div>
 </div>

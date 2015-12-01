@@ -7,7 +7,7 @@
 			<div class="widget-box">
 				<div class="widget-title">
 					<span class="icon"> <i class="icon-info-sign"></i> </span>
-					<h5></h5>
+					<h5>新增标签</h5>
 				</div>
 				<div class="widget-content nopadding">
 					{!! Form::open(['url' => URL('admin/tag'), 'id' => 'create_tag', 'class' => 'form-horizontal']) !!}
@@ -22,6 +22,6 @@
 <script src="{{ asset('js/select2.min.js') }}"></script>
 <script src="{{ asset('js/jquery.validate.js') }}"></script>
 <script src="{{ asset('js/matrix.form_validation.js') }}"></script>
-
+<script src="{{ asset('js/germy.tag.js') }}"></script>
 
 @endsection

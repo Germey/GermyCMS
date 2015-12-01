@@ -10,3 +10,39 @@ div[data-toggle="buttons-radio"] {
 		background-color: #bd362f;
 	}
 }
+
+
+.slide-up-down {
+    cursor: pointer;
+    & > :first-child {
+        display: block;
+    }
+    & > :last-child {
+        display: none;
+    }
+}
+
+.inline {
+    display: inline-block;
+}
+
+/* select2 */
+
+@border_color: #CCC;
+
+.select2-search--dropdown .select2-search__field {
+    padding: 13px;
+}
+
+.select2-container--default .select2-selection--single {
+    border-radius: 0;
+}
+
+.select2-container--default.select2-container--focus .select2-selection--multiple {
+    border: 1px solid @border_color;
+}
+
+.select2-container--default .select2-selection--multiple {
+    border: 1px solid @border_color;
+    border-radius: 0;
+}

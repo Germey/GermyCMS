@@ -30,20 +30,27 @@
 
 
     /* 后台管理 */
-    Route::group(['prefix' => 'admin', 'middleware' => 'auth.admin', 'namespace' => 'Admin'], function () {
+    Route::group(['prefix' => 'admin', 'middleware' => 'auth.admin', 'namespace' => 'Admin'], function() {
         Route::get('/', 'HomeController@index');
         Route::resource('tag', 'TagController');
         Route::resource('article', 'ArticleController');
     });
 
-    /* 后台权限 */
-    Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
+
+    /* 后台权限，单独分离，防止发生重定向循环 */
+    Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function() {
         Route::controllers([
             'auth' => 'AuthController',
             'password' => 'PasswordController',
         ]);
     });
 
+
+    /* 操作管理 */
+    Route::group(['namespace' => 'Admin'], function() {
+        Route::get('ajaxGetTags', 'TagController@ajaxGetTags');
+        Route::post('ajaxAddTags', 'TagController@ajaxAddTags');
+    });
 
 
 

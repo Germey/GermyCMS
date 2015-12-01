@@ -12,11 +12,6 @@
 					{!! Form::model($article, ['url' => URL('admin/article/'.$article->id), 'class' => 'form-horizontal', 'method' => 'PUT', 'id' => 'edit_article']) !!}
 						@include('admin.article.form', ['buttonName' => '修改'])
 					{!! Form::close() !!}
-                    @if ($article->tags)
-                        @foreach ($article->tags as $tag)
-                            <div>{{ $tag->name }}</div>
-                        @endforeach
-                    @endif
 				</div>
 			</div>
 		</div>
@@ -26,5 +21,6 @@
 <script src="{{ asset('js/bootstrap-wysihtml5.js') }}"></script>
 <script src="{{ asset('js/jquery.validate.js') }}"></script>
 <script src="{{ asset('js/matrix.form_validation.js') }}"></script>
+<script src="{{ asset('js/select2.min.js') }}"></script>
 <script src="{{ asset('js/germy.article.js') }}"></script>
 @endsection
