@@ -2,23 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6ce0eaf6-6a59-4c28-ac8e-bb6967ea5d18" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/ArticleController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/ArticleController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Kernel.php" afterPath="$PROJECT_DIR$/app/Http/Kernel.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/TagController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/TagController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/admin/article/create.blade.php" afterPath="$PROJECT_DIR$/resources/views/admin/article/create.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/admin/tag/create.blade.php" afterPath="$PROJECT_DIR$/resources/views/admin/tag/create.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/admin/article/edit.blade.php" afterPath="$PROJECT_DIR$/resources/views/admin/article/edit.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/admin/tag/edit.blade.php" afterPath="$PROJECT_DIR$/resources/views/admin/tag/edit.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/admin/article/form.blade.php" afterPath="$PROJECT_DIR$/resources/views/admin/article/form.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/admin/tag/form.blade.php" afterPath="$PROJECT_DIR$/resources/views/admin/tag/form.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/germy.article.js" afterPath="$PROJECT_DIR$/public/js/germy.article.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/admin/layout/germy.blade.php" afterPath="$PROJECT_DIR$/resources/views/admin/layout/germy.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/css/germy.css" afterPath="$PROJECT_DIR$/public/css/germy.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/germy.js" afterPath="$PROJECT_DIR$/public/js/germy.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/less/germy.less" afterPath="$PROJECT_DIR$/public/less/germy.less" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/routes.php" afterPath="$PROJECT_DIR$/app/Http/routes.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/css/select2.css" afterPath="$PROJECT_DIR$/public/css/select2.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/select2.min.js" afterPath="$PROJECT_DIR$/public/js/select2.min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/less/germy.css" afterPath="$PROJECT_DIR$/public/less/germy.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="germycms.iws" />
@@ -126,8 +110,8 @@
       <file leaf-file-name="TagController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Admin/TagController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5674157">
-              <caret line="112" column="36" selection-start-line="112" selection-start-column="36" selection-end-line="112" selection-end-column="36" />
+            <state vertical-scroll-proportion="0.2275281">
+              <caret line="101" column="5" selection-start-line="101" selection-start-column="5" selection-end-line="101" selection-end-column="5" />
               <folding>
                 <element signature="e#45#67#0#PHP" expanded="true" />
               </folding>
@@ -1472,8 +1456,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Admin/TagController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5674157">
-          <caret line="112" column="36" selection-start-line="112" selection-start-column="36" selection-end-line="112" selection-end-column="36" />
+        <state vertical-scroll-proportion="0.2275281">
+          <caret line="101" column="5" selection-start-line="101" selection-start-column="5" selection-end-line="101" selection-end-column="5" />
           <folding>
             <element signature="e#45#67#0#PHP" expanded="true" />
           </folding>
