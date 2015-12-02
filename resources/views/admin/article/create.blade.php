@@ -6,7 +6,7 @@
                 <div class="widget-box">
                     <div class="widget-title">
                         <span class="icon"> <i class="icon-info-sign"></i> </span>
-                        <h5>新建一篇文章</h5>
+                        <h5>新建文章</h5>
                     </div>
                     <div class="widget-content nopadding">
                         {!! Form::open(['url' => URL('admin/article'), 'class' => 'form-horizontal', 'id' => 'create_article']) !!}
