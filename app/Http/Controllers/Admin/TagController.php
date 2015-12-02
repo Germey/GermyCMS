@@ -93,7 +93,7 @@ class TagController extends Controller {
     public function update(TagRequest $request, Tag $tag) {
         if ($tag->update($request->all())) {
             Flash::success('修改成功！');
-            return Redirect::to('admin/tag');
+            return Redirect::back()->withInput();
         } else {
             Flash::error('修改失败！');
             return Redirect::back()->withInput();
