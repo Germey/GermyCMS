@@ -34,6 +34,7 @@
         Route::get('/', 'HomeController@index');
         Route::resource('tag', 'TagController');
         Route::resource('article', 'ArticleController');
+        Route::resource('user', 'UserController');
     });
 
 

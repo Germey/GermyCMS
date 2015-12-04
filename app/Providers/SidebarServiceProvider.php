@@ -100,7 +100,7 @@ class SidebarServiceProvider extends ServiceProvider {
             ['path' => '', 'text' => '人员管理', 'icon' => 'signal'],
             ['path' => '', 'text' => '图文管理', 'icon' => 'signal'],
             ['path' => '', 'text' => '菜单管理', 'icon' => 'signal'],
-            ['path' => '', 'text' => '个人详情', 'icon' => 'signal'],
+            ['path' => 'user', 'text' => '个人详情', 'icon' => 'signal'],
             ['path' => '', 'text' => '我的发布', 'icon' => 'signal'],
             ['path' => '', 'text' => '我的关注', 'icon' => 'signal'],
             ['path' => '', 'text' => '我的收藏', 'icon' => 'signal'],
