@@ -3,8 +3,9 @@
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
 use Illuminate\Http\Request;
-use View, Auth;
+use View, Auth, Flash;
 use App\Model\User;
+use App\Http\Requests\InfoRequest;
 
 class InfoController extends Controller {
 
@@ -57,8 +58,8 @@ class InfoController extends Controller {
      * @param  int $id
      * @return Response
      */
-    public function show($id) {
-
+    public function show(Request $request,$id) {
+        var_dump($request);
     }
 
     /**
@@ -68,7 +69,7 @@ class InfoController extends Controller {
      * @return Response
      */
     public function edit(User $user) {
-        if ($user->id == Auth::user()->id) {
+        if ($this->isMe($user)) {
             return View::make($this->getView('edit'))->withUser($user);
         }
     }
@@ -76,11 +77,26 @@ class InfoController extends Controller {
     /**
      * Update the specified resource in storage.
      *
+     * Mark: Because the relation is hasOne, info returns an Object not a Collection,
+     * So it works, or if the relation is hasMany, info returns a Collection Object,
+     * It will not work
+     *
+     * Mark: If it is not an object,Calling update will ignore fillable variable.
+     *
      * @param  int $id
      * @return Response
      */
-    public function update($id) {
-        //
+    public function update(InfoRequest $request, User $user) {
+        if ($this->isMe($user)) {
+            if ($user->info->update($request->all())) {
+                Flash::success('修改成功！');
+                return View::make($this->getView('edit'))->withUser($user);
+            } else {
+                Flash::error('修改失败！');
+                return Redirect::back()->withInput();
+            }
+        }
+
     }
 
     /**
@@ -100,6 +116,14 @@ class InfoController extends Controller {
      */
     public function getView($name) {
         return $this->preView . $name;
+    }
+
+    /**
+     * @param User $user
+     * @return bool
+     */
+    private function isMe(User $user) {
+        return $user->id == Auth::user()->id;
     }
 
 }

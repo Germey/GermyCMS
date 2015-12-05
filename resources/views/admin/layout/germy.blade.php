@@ -37,8 +37,9 @@
 	<script src="{{ asset('js/matrix.chat.js') }}"></script>
 	<script src="{{ asset('js/jquery.validate.js') }}"></script>
 	<script src="{{ asset('js/jquery.wizard.js') }}"></script>
-	<script src="{{ asset('js/jquery.uniform.js') }}"></script>
+
 	<script src="{{ asset('js/select2.min.js') }}"></script>
+
 	<script src="{{ asset('js/matrix.popover.js') }}"></script>
 	<script src="{{ asset('js/jquery.dataTables.min.js') }}"></script>
 	<script src="{{ asset('js/matrix.tables.js') }}"></script>
@@ -52,6 +53,7 @@
     <script src="{{ asset('js/matrix.form_common.js') }}"></script>
     <script src="{{ asset('js/wysihtml5-0.3.0.js') }}"></script>
     <script src="{{ asset('js/bootstrap-wysihtml5.js') }}"></script>
+
     -->
 
     <script src="{{ asset('js/germy.main.js') }}"></script>

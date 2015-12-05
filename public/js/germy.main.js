@@ -14,4 +14,6 @@ $(function() {
     $('.btn-group .value').radio();
     // wysihtml5
     $('.textarea_editor').wysihtml5();
+    //date picker
+    $('.datepicker').datepicker();
 });

@@ -4,8 +4,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Article extends Model {
 
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
 	protected $fillable = ['title', 'subtitle', 'summary', 'content', 'weight', 'allow_comment'];
-
 
 	/**
 	 * Get the user this article belongs to

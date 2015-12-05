@@ -1,7 +1,8 @@
 @extends('admin.public.content')
 @section('main')
-    <link rel="stylesheet" href="{{ asset('css/colorpicker.css') }}" />
-    <link rel="stylesheet" href="{{ asset('css/datepicker.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/colorpicker.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('css/datepicker.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('css/uniform.css') }}" />
     <div class="main">
         <div class="container-fluid">
             <div class="row-fluid">
@@ -16,10 +17,11 @@
                                 <li><a data-toggle="tab" href="#tab5">头像设置</a></li>
                             </ul>
                         </div>
-                        <div class="widget-content tab-content">
-                            <div id="tab1" class="tab-pane active">
-                                @if ($user->info)
-                                    {!! Form::model($user->info, ['url' => URL('admin/info/'.$user->id), 'class' => 'form-horizontal', 'method' => 'PUT', 'id' => 'edit-base-info']) !!}
+                        @if ($user->info)
+                            {!! Form::model($user->info, ['url' => URL('admin/info/'.$user->id), 'class' => 'form-horizontal', 'method' => 'PUT', 'id' => 'edit-base-info']) !!}
+                            {!! Form::hidden('tab', null, ['id' => 'info-tab']) !!}
+                            <div class="widget-content tab-content">
+                                <div id="tab1" class="tab-pane active">
                                     <div class="control-group">
                                         {!! Form::label('nickname', '昵称', ['class' => 'control-label']) !!}
                                         <div class="controls">
@@ -44,12 +46,8 @@
                                             {!! Form::textarea('detail', null, ['class' => 'textarea_editor span8']) !!}
                                         </div>
                                     </div>
-                                    {!! Form::close() !!}
-                                @endif
-                            </div>
-                            <div id="tab2" class="tab-pane">
-                                @if ($user->info)
-                                    {!! Form::model($user->info, ['url' => URL('admin/info/'.$user->id), 'class' => 'form-horizontal', 'method' => 'PUT', 'id' => 'edit-detail-info']) !!}
+                                </div>
+                                <div id="tab2" class="tab-pane">
                                     <div class="control-group">
                                         {!! Form::label('gender', '性别', ['class' => 'control-label']) !!}
                                         <div class="controls">
@@ -61,18 +59,9 @@
                                         </div>
                                     </div>
                                     <div class="control-group">
-                                        <label class="control-label">Date Picker (mm-dd)</label>
-                                        <div class="controls">
-                                            <div data-date="12-02-2012" class="input-append date datepicker">
-                                                <input type="text" value="12-02-2012"  data-date-format="mm-dd-yyyy" class="span11" >
-                                                <span class="add-on"><i class="icon-th"></i></span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="control-group">
                                         {!! Form::label('birthday', '出生日期', ['class' => 'control-label']) !!}
                                         <div class="controls">
-                                            {!! Form::text('birthday', null, ['class' => 'span4']) !!}
+                                            {!! Form::text('birthday', null, ['class' => 'datepicker span4', 'data-date-format' => 'yyyy-mm-dd']) !!}
                                         </div>
                                     </div>
                                     <div class="control-group">
@@ -87,31 +76,51 @@
                                             </div>
                                         </div>
                                     </div>
-                                    {!! Form::close() !!}
-                                @endif
+                                </div>
+                                <div id="tab3" class="tab-pane">
+                                    <div class="edu-content">
+                                        <div class="edu-messages">
+                                            <div id="edu-messages-inner"></div>
+                                        </div>
+                                        <div class="well">
+                                            <span class="input-box">
+                                                {!! Form::text('edu_name', null, ['placeholder' => '学校',  'id' => 'edu-name']) !!}
+                                            </span>
+                                            <span class="input-box">
+                                                {!! Form::text('edu_start', null, ['placeholder' => '入学时间', 'id' => 'edu-start']) !!}
+                                            </span>
+                                            <span class="input-box">
+                                                {!! Form::text('edu_end', null, ['placeholder' => '入学时间', 'id' => 'edu-end']) !!}
+                                            </span>
+                                            <span class="input-box">
+                                                {!! Form::text('edu_loc', null, ['placeholder' => '学校', 'id' => 'edu-loc']) !!}
+                                            </span>
+                                            {!! Form::button('添加', ['class' => 'btn btn-success', 'id' => 'add-edu-item']) !!}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="tab4" class="tab-pane">
+
+                                </div>
+                                <div id="tab5" class="tab-pane">
+                                    <div class="control-group">
+                                        <label class="control-label">上传新头像</label>
+                                        <div class="controls">
+                                            {!! Form::file('image') !!}
+                                        </div>
+                                        <div class="controls">
+                                            {!! Form::button('上传', ['class' => 'btn btn-success', 'id' => 'upload-info-image']) !!}
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <div id="tab3" class="tab-pane">
-                                <p>full of waffle to pad out the comment. Usually, you just wish these sorts of comments
-                                    would come to an end.multiple paragraphs and is full of waffle to pad out the
-                                    comment. Usually, you just wish these sorts of comments would come to an end. </p>
+                            <div class="control-group">
+                                <div class="controls">
+                                    {!! Form::submit('保存', ['class' => 'btn btn-primary']) !!}
+                                </div>
                             </div>
-                            <div id="tab4" class="tab-pane">
-                                <p>And is full of waffle to It has multiple paragraphs and is full of waffle to pad out
-                                    the comment. Usually, you just wish these sorts of comments would come to an
-                                    end.multiple paragraphs and is full of waffle to pad out the comment. Usually, you
-                                    just wish these sorts of comments would come to an end.multiple paragraphs and is
-                                    full of waffle to pad out the comment. Usually, you just wish these sorts of
-                                    comments would come to an end. </p>
-                            </div>
-                            <div id="tab5" class="tab-pane">
-                                <p>And is full of waffle to It has multiple paragraphs and is full of waffle to pad out
-                                    the comment. Usually, you just wish these sorts of comments would come to an
-                                    end.multiple paragraphs and is full of waffle to pad out the comment. Usually, you
-                                    just wish these sorts of comments would come to an end.multiple paragraphs and is
-                                    full of waffle to pad out the comment. Usually, you just wish these sorts of
-                                    comments would come to an end. </p>
-                            </div>
-                        </div>
+                            {!! Form::close() !!}
+                        @endif
                     </div>
                 </div>
             </div>
@@ -121,12 +130,12 @@
     <script src="{{ asset('js/wysihtml5-0.3.0.js') }}"></script>
     <script src="{{ asset('js/bootstrap-wysihtml5.js') }}"></script>
     <!-- end wysihtml5 -->
-    <script src="{{ asset('js/jquery.uniform.js') }}"></script>
-    <script src="{{ asset('js/select2.min.js') }}"></script>
-    <script src="{{ asset('js/bootstrap-colorpicker.js') }}"></script>
+    <!-- date picker -->
     <script src="{{ asset('js/bootstrap-datepicker.js') }}"></script>
-    <script src="{{ asset('js/masked.js') }}"></script>
-    <script src="{{ asset('js/matrix.form_common.js') }}"></script>
+    <!-- end date picker -->
+    <!-- uniform -->
+    <script src="{{ asset('js/jquery.uniform.js') }}"></script>
+    <!-- end uniform -->
     <!-- germy info -->
     <script src="{{ asset('js/germy.info.js') }}"></script>
     <!-- end germy info -->

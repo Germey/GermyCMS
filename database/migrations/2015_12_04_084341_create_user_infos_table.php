@@ -32,6 +32,7 @@ class CreateUserInfosTable extends Migration {
             $table->text('education')->nullable();
             $table->text('work')->nullable();
             $table->integer('popularity')->default(0);
+            $table->integer('tab')->default(0);
 			$table->timestamps();
 		});
 	}
