@@ -18,6 +18,7 @@
 		<script src="{{ asset('js/jquery.ui.custom.js') }}"></script>
 		<script src="{{ asset('js/matrix.js') }}"></script>
 		<script src="{{ asset('js/bootstrap.min.js') }}"></script>
+        <script src="{{ asset('js/germy.js') }}"></script>
 	</head>
 	<body>
 		@include('admin.public.header')
@@ -27,7 +28,7 @@
 		@yield('content')
 		@include('admin.public.footer')
 	</body>
-	<!--
+    <!--
 	<script src="{{ asset('js/excanvas.min.js') }}"></script>
 	<script src="{{ asset('js/jquery.peity.min.js') }}"></script>
 	<script src="{{ asset('js/fullcalendar.min.js') }}"></script>
@@ -43,9 +44,15 @@
 	<script src="{{ asset('js/matrix.tables.js') }}"></script>
 	<script src="{{ asset('js/matrix.form_validation.js') }}"></script>
 	<script src="{{ asset('js/jquery.peity.min.js') }}"></script>
-	
 	<script src="{{ asset('js/jquery.form.js') }}"></script>
-	
-	-->
-	<script src="{{ asset('js/germy.js') }}"></script>
+    <script src="{{ asset('js/bootstrap-colorpicker.js') }}"></script>
+    <script src="{{ asset('js/bootstrap-datepicker.js') }}"></script>
+    <script src="{{ asset('js/jquery.toggle.buttons.html') }}"></script>
+    <script src="{{ asset('js/masked.js') }}"></script>
+    <script src="{{ asset('js/matrix.form_common.js') }}"></script>
+    <script src="{{ asset('js/wysihtml5-0.3.0.js') }}"></script>
+    <script src="{{ asset('js/bootstrap-wysihtml5.js') }}"></script>
+    -->
+
+    <script src="{{ asset('js/germy.main.js') }}"></script>
 </html>

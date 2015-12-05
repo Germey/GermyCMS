@@ -41,6 +41,13 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 		return $this->hasMany('App\Model\Article');
 	}
 
-
+    /**
+     * Return info of user.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function info() {
+        return $this->hasOne('App\Model\UserInfo');
+    }
 
 }

@@ -3,14 +3,19 @@
  */
 /* admin.article.create */
 
-$(function() {
-    $('.slide-up-down').on('click', function() {
-        $($(this).attr('href')).slideToggle();
-        var text = $(this).find(':first-child').html();
-        $(this).find(':first-child').html($(this).find(':last-child').html());
-        $(this).find(':last-child').html(text);
+jQuery.fn.radio = function() {
+    var ele = $(this);
+    ele.siblings('button').each(function() {
+        if ($(this).attr('value') == ele.attr('value')) {
+            $(this).addClass('active');
+        }
     });
-});
+    $(this).siblings('button').on('click', function() {
+        ele.attr('value', $(this).attr('value'));
+    });
+}
+
+
 
 
 

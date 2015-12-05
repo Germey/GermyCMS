@@ -27,7 +27,7 @@
     /* 路由模型绑定 */
     Route::model('article', 'App\Model\Article');
     Route::model('tag', 'App\Model\Tag');
-
+    Route::model('info', 'App\Model\User');
 
     /* 后台管理 */
     Route::group(['prefix' => 'admin', 'middleware' => 'auth.admin', 'namespace' => 'Admin'], function() {
@@ -35,6 +35,7 @@
         Route::resource('tag', 'TagController');
         Route::resource('article', 'ArticleController');
         Route::resource('user', 'UserController');
+        Route::resource('info', 'InfoController');
     });
 
 

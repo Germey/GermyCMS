@@ -9,7 +9,7 @@
                         <h5>新建文章</h5>
                     </div>
                     <div class="widget-content nopadding">
-                        {!! Form::open(['url' => URL('admin/article'), 'class' => 'form-horizontal', 'id' => 'create_article']) !!}
+                        {!! Form::open(['url' => URL('admin/article'), 'class' => 'form-horizontal', 'id' => 'create-article']) !!}
                             @include('admin.article.form', ['buttonName' => '新增'])
                         {!! Form::close() !!}
                     </div>
@@ -17,8 +17,10 @@
             </div>
         </div>
     </div>
+    <!-- wysihtml5 -->
     <script src="{{ asset('js/wysihtml5-0.3.0.js') }}"></script>
     <script src="{{ asset('js/bootstrap-wysihtml5.js') }}"></script>
+    <!-- end wysihtml5 -->
     <script src="{{ asset('js/jquery.validate.js') }}"></script>
     <script src="{{ asset('js/matrix.form_validation.js') }}"></script>
     <script src="{{ asset('js/select2.min.js') }}"></script>

@@ -34,7 +34,7 @@
         <div data-toggle="buttons-radio" class="btn-group">
             {!! Form::button('是', ['class' => 'btn', 'value' => 1]) !!}
             {!! Form::button('否', ['class' => 'btn', 'value' => 0]) !!}
-            {!! Form::hidden('allow_comment', null) !!}
+            {!! Form::hidden('allow_comment', null, ['class' => 'value']) !!}
         </div>
     </div>
 </div>

@@ -11,7 +11,11 @@ use Illuminate\Http\Request;
 
 class ArticleController extends Controller {
 
-
+    /**
+     * The pre name of view
+     *
+     * @var array
+     */
     private $preView = 'admin.article.';
 
     /**
@@ -21,16 +25,6 @@ class ArticleController extends Controller {
         $this->middleware('article', ['only' => ['store', 'update']]);
     }
 
-
-    /**
-     * Get view name by name
-     *
-     * @param $name
-     * @return string
-     */
-    public function getView($name) {
-        return $this->preView . $name;
-    }
 
     /**
      * Display a listing of the resource.
@@ -155,5 +149,14 @@ class ArticleController extends Controller {
         return $article;
     }
 
+
+    /**
+     * Get Name of View
+     *
+     * @return ViewName
+     */
+    public function getView($name) {
+        return $this->preView . $name;
+    }
 
 }
