@@ -3,6 +3,7 @@
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use View, Auth, Flash;
 use App\Model\User;
 use App\Http\Requests\InfoRequest;

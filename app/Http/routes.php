@@ -52,6 +52,7 @@
     Route::group(['namespace' => 'Admin'], function() {
         Route::get('ajaxGetTags', 'TagController@ajaxGetTags');
         Route::post('ajaxAddTags', 'TagController@ajaxAddTags');
+        Route::post('ajaxUploadInfoImg', 'UploadController@ajaxUploadInfoImg');
     });
 
 

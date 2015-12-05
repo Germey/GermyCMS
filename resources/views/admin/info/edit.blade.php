@@ -104,12 +104,15 @@
                                 </div>
                                 <div id="tab5" class="tab-pane">
                                     <div class="control-group">
+                                        <div class="controls">
+                                            <img src="" id="now-img">
+                                        </div>
                                         <label class="control-label">上传新头像</label>
                                         <div class="controls">
-                                            {!! Form::file('image') !!}
+                                            {!! Form::file('image', ['id' => 'info-img']) !!}
                                         </div>
                                         <div class="controls">
-                                            {!! Form::button('上传', ['class' => 'btn btn-success', 'id' => 'upload-info-image']) !!}
+                                            {!! Form::button('上传', ['class' => 'btn btn-success', 'id' => 'upload-info-img']) !!}
                                         </div>
                                     </div>
                                 </div>
@@ -134,8 +137,13 @@
     <script src="{{ asset('js/bootstrap-datepicker.js') }}"></script>
     <!-- end date picker -->
     <!-- uniform -->
+    <!--
     <script src="{{ asset('js/jquery.uniform.js') }}"></script>
+    -->
     <!-- end uniform -->
+    <!-- file upload -->
+    <script src="{{ asset('js/jquery.ajaxfileupload.js') }}"></script>
+    <!-- end file upload -->
     <!-- germy info -->
     <script src="{{ asset('js/germy.info.js') }}"></script>
     <!-- end germy info -->
