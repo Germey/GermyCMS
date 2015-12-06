@@ -27,7 +27,8 @@ class UserInfo extends Model {
         'tab',
         'gender',
         'birthday',
-        'blood_type'
+        'blood_type',
+        'education'
     ];
 
 
@@ -40,8 +41,35 @@ class UserInfo extends Model {
         return $this->belongsTo('App\Model\User');
     }
 
+    /**
+     * Return array fillable.
+     *
+     * @return array
+     */
     public function getFillable() {
         return $this->fillable;
+    }
+
+    /**
+     * Education variable to sequence.
+     *
+     * @param $education
+     * @return string
+     */
+    public function setEducationAttribute($education) {
+        $this->attributes['education'] = serialize(assoc_to_index($education));
+    }
+
+
+
+    /**
+     * Unserialize variable to array.
+     *
+     * @param $education
+     * @return string
+     */
+    public function getEducationAttribute($education) {
+        return unserialize($education);
     }
 
 }

@@ -97,7 +97,6 @@ class InfoController extends Controller {
                 return Redirect::back()->withInput();
             }
         }
-
     }
 
     /**

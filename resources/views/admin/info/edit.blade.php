@@ -87,13 +87,13 @@
                                                 {!! Form::text('edu_name', null, ['placeholder' => '学校',  'id' => 'edu-name']) !!}
                                             </span>
                                             <span class="input-box">
-                                                {!! Form::text('edu_start', null, ['placeholder' => '入学时间', 'id' => 'edu-start']) !!}
+                                                {!! Form::text('edu_start', null, ['placeholder' => '入学时间', 'id' => 'edu-start', 'class' => 'datepicker', 'data-date-format' => 'yyyy-mm-dd']) !!}
                                             </span>
                                             <span class="input-box">
-                                                {!! Form::text('edu_end', null, ['placeholder' => '入学时间', 'id' => 'edu-end']) !!}
+                                                {!! Form::text('edu_end', null, ['placeholder' => '入学时间', 'id' => 'edu-end', 'class' => 'datepicker', 'data-date-format' => 'yyyy-mm-dd']) !!}
                                             </span>
                                             <span class="input-box">
-                                                {!! Form::text('edu_loc', null, ['placeholder' => '学校', 'id' => 'edu-loc']) !!}
+                                                {!! Form::text('edu_loc', null, ['placeholder' => '地点', 'id' => 'edu-loc']) !!}
                                             </span>
                                             {!! Form::button('添加', ['class' => 'btn btn-success', 'id' => 'add-edu-item']) !!}
                                         </div>
@@ -105,7 +105,12 @@
                                 <div id="tab5" class="tab-pane">
                                     <div class="control-group">
                                         <div class="controls">
-                                            <img src="" id="now-img">
+                                            @if ($user->info->image)
+                                                <img id="now-img" src="{{ $user->info->image }}">
+                                            @else
+                                                <img id="now-img">
+                                            @endif
+                                            {!! Form::hidden('image', null, ['id' => 'now-img-src']) !!}
                                         </div>
                                         <label class="control-label">上传新头像</label>
                                         <div class="controls">
@@ -147,4 +152,12 @@
     <!-- germy info -->
     <script src="{{ asset('js/germy.info.js') }}"></script>
     <!-- end germy info -->
+    <?php
+        //dd($user->info->education);
+    ?>
+    <script>
+    @foreach ($user->info->education as $item)
+        add_message("{{ $item['name'] }}", "{{ $item['start'] }}", "{{ $item['end'] }}", "{{ $item['loc'] }}");
+    @endforeach
+    </script>
 @endsection
