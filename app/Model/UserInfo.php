@@ -28,9 +28,9 @@ class UserInfo extends Model {
         'gender',
         'birthday',
         'blood_type',
-        'education'
+        'education',
+        'work',
     ];
-
 
     /**
      * Return user of info.
@@ -60,8 +60,6 @@ class UserInfo extends Model {
         $this->attributes['education'] = serialize(assoc_to_index($education));
     }
 
-
-
     /**
      * Unserialize variable to array.
      *
@@ -70,6 +68,26 @@ class UserInfo extends Model {
      */
     public function getEducationAttribute($education) {
         return unserialize($education);
+    }
+
+    /**
+     * Work variable to sequence.
+     *
+     * @param $work
+     * @return string
+     */
+    public function setWorkAttribute($work) {
+        $this->attributes['work'] = serialize(assoc_to_index($work));
+    }
+
+    /**
+     * Unserialize variable to array.
+     *
+     * @param $work
+     * @return string
+     */
+    public function getWorkAttribute($work) {
+        return unserialize($work);
     }
 
 }

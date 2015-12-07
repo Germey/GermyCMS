@@ -100,7 +100,26 @@
                                     </div>
                                 </div>
                                 <div id="tab4" class="tab-pane">
-
+                                    <div class="work-content">
+                                        <div class="work-messages">
+                                            <div id="work-messages-inner"></div>
+                                        </div>
+                                        <div class="well">
+                                            <span class="input-box">
+                                                {!! Form::text('work_name', null, ['placeholder' => '单位',  'id' => 'work-company']) !!}
+                                            </span>
+                                            <span class="input-box">
+                                                {!! Form::text('work_start', null, ['placeholder' => '开始工作时间', 'id' => 'work-start', 'class' => 'datepicker', 'data-date-format' => 'yyyy-mm-dd']) !!}
+                                            </span>
+                                            <span class="input-box">
+                                                {!! Form::text('work_end', null, ['placeholder' => '结束时间', 'id' => 'work-end', 'class' => 'datepicker', 'data-date-format' => 'yyyy-mm-dd']) !!}
+                                            </span>
+                                            <span class="input-box">
+                                                {!! Form::text('work_loc', null, ['placeholder' => '职位', 'id' => 'work-occupation']) !!}
+                                            </span>
+                                            {!! Form::button('添加', ['class' => 'btn btn-success', 'id' => 'add-work-item']) !!}
+                                        </div>
+                                    </div>
                                 </div>
                                 <div id="tab5" class="tab-pane">
                                     <div class="control-group">
@@ -157,7 +176,10 @@
     ?>
     <script>
     @foreach ($user->info->education as $item)
-        add_message("{{ $item['name'] }}", "{{ $item['start'] }}", "{{ $item['end'] }}", "{{ $item['loc'] }}");
+        add_edu_message("{{ $item['name'] }}", "{{ $item['start'] }}", "{{ $item['end'] }}", "{{ $item['loc'] }}");
+    @endforeach
+    @foreach ($user->info->work as $item)
+        add_work_message("{{ $item['company'] }}", "{{ $item['start'] }}", "{{ $item['end'] }}", "{{ $item['occupation'] }}");
     @endforeach
     </script>
 @endsection

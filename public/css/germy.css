@@ -1,3 +1,4 @@
+/* public */
 .pagination ul {
   margin-top: -20px;
 }
@@ -17,6 +18,10 @@ div[data-toggle="buttons-radio"] button.active {
 .inline {
   display: inline-block;
 }
+/* matrix*/
+.form-horizontal .control-group {
+  border-top: none;
+}
 /* select2 */
 .select2-search--dropdown .select2-search__field {
   padding: 13px;
@@ -32,6 +37,38 @@ div[data-toggle="buttons-radio"] button.active {
   border-radius: 0;
 }
 /* info */
+/* info-public-content */
+.public-item .item {
+  padding: 0px;
+  margin: 10px 0 0 0;
+}
+.public-item .item .msg-block {
+  background: none repeat scroll 0 0 #FFFFFF;
+  border: 1px solid #cccccc;
+  box-shadow: 1px 1px 0 1px rgba(0, 0, 0, 0.05);
+  display: block;
+  margin-left: 0px;
+  padding: 10px;
+  position: relative;
+}
+.public-item .item .msg-block img {
+  display: inline-block;
+  float: left;
+  vertical-align: middle;
+  width: 28px;
+  height: 28px;
+  margin-top: -1px;
+  margin-right: 10px;
+}
+.public-item .item .msg-block .msg {
+  display: block;
+  margin-top: 13px;
+  border-top: 1px solid #dadada;
+  padding-top: 5px;
+}
+.public-item .item .msg-block .right {
+  margin-left: 10px;
+}
 .edu-content {
   height: 490px;
   padding: 15px;
@@ -69,6 +106,46 @@ div[data-toggle="buttons-radio"] button.active {
   border-top: 1px solid #dadada;
   padding-top: 5px;
 }
-.edu-content .edu-messages .item .msg-block .country {
+.edu-content .edu-messages .item .msg-block .right {
+  margin-left: 10px;
+}
+.work-content {
+  height: 490px;
+  padding: 15px;
+}
+.work-content .work-messages {
+  height: 420px;
+  overflow: auto;
+  position: relative;
+}
+.work-content .item {
+  padding: 0px;
+  margin: 10px 0 0 0;
+}
+.work-content .item .msg-block {
+  background: none repeat scroll 0 0 #FFFFFF;
+  border: 1px solid #cccccc;
+  box-shadow: 1px 1px 0 1px rgba(0, 0, 0, 0.05);
+  display: block;
+  margin-left: 0px;
+  padding: 10px;
+  position: relative;
+}
+.work-content .item .msg-block img {
+  display: inline-block;
+  float: left;
+  vertical-align: middle;
+  width: 28px;
+  height: 28px;
+  margin-top: -1px;
+  margin-right: 10px;
+}
+.work-content .item .msg-block .msg {
+  display: block;
+  margin-top: 13px;
+  border-top: 1px solid #dadada;
+  padding-top: 5px;
+}
+.work-content .item .msg-block .right {
   margin-left: 10px;
 }

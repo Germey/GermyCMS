@@ -2,14 +2,12 @@
  * Created by CQC on 2015/12/4.
  */
 
-
-
-function add_message(name, start, end, location) {
+function add_edu_message(name, start, end, location) {
     var inner = $('#edu-messages-inner');
     var img = '/img/demo/av2.jpg';
     inner.append('<p class="item">'
         + '<span class="msg-block"><img src="' + img + '"/><strong>' + name + '</strong>'
-        + '<span class="country">' + location + '</span><span class="pull-right"><i class="icon-remove"></i>'
+        + '<span class="right">' + location + '</span><span class="pull-right"><i class="icon-remove"></i>'
         + '</span><span class="msg">' + start
         + ' - ' + end + '</span></span>'
         + '<input type="hidden" name="education[name][]" value="' + name + '">'
@@ -22,6 +20,25 @@ function add_message(name, start, end, location) {
 }
 
 
+function add_work_message(company, start, end, occupation) {
+    var inner = $('#work-messages-inner');
+    var img = '/img/demo/av2.jpg';
+    inner.append('<p class="item">'
+        + '<span class="msg-block"><img src="' + img + '"/><strong>' + company + '</strong>'
+        + '<span class="right">' + occupation + '</span><span class="pull-right"><i class="icon-remove"></i>'
+        + '</span><span class="msg">' + start
+        + ' - ' + end + '</span></span>'
+        + '<input type="hidden" name="work[company][]" value="' + company + '">'
+        + '<input type="hidden" name="work[start][]" value="' + start + '">'
+        + '<input type="hidden" name="work[end][]" value="' + end + '">'
+        + '<input type="hidden" name="work[occupation][]" value="' + occupation + '">'
+        + '</p>');
+    $('.work-content .input-box input').val('');
+    $('.work-messages').animate({scrollTop: inner.height()}, 1000);
+}
+
+
+
 $(function() {
     $('.main ul.nav-tabs li').on('click', function() {
         $('#info-tab').val($(this).index());
@@ -32,12 +49,22 @@ $(function() {
 
     // edu-info
     $('#add-edu-item').on('click', function() {
-        add_message($('#edu-name').val(), $('#edu-start').val(), $('#edu-end').val(), $('#edu-loc').val());
+        add_edu_message($('#edu-name').val(), $('#edu-start').val(), $('#edu-end').val(), $('#edu-loc').val());
     });
 
     $('#edu-messages-inner .item i.icon-remove').on('click', function() {
-       $(this).parents('.item').remove();
+        $(this).parents('.item').remove();
     });
+
+    // work-info
+    $('#add-work-item').on('click', function() {
+        add_work_message($('#work-company').val(), $('#work-start').val(), $('#work-end').val(), $('#work-occupation').val());
+    });
+
+    $('#work-messages-inner .item i.icon-remove').on('click', function() {
+        $(this).parents('.item').remove();
+    });
+
     // upload-info-image
     $('#upload-info-img').on('click', function() {
 
