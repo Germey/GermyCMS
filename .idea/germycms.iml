@@ -2,9 +2,11 @@
 <module type="WEB_MODULE" version="4">
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$/../admin" />
+    <content url="file://$MODULE_DIR$/../frozenui" />
     <content url="file://$MODULE_DIR$" />
     <content url="file://$MODULE_DIR$/../hwby" />
     <content url="file://$MODULE_DIR$/../learnlaravel5" />
+    <content url="file://$MODULE_DIR$/../waimai" />
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>

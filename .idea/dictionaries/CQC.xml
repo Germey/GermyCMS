@@ -2,20 +2,35 @@
   <dictionary name="CQC">
     <words>
       <w>aren</w>
+      <w>borre</w>
       <w>colorpicker</w>
+      <w>cqcre</w>
+      <w>cuiqingcai</w>
+      <w>datepick</w>
       <w>datepicker</w>
       <w>datetimepicker</w>
+      <w>dropzone</w>
       <w>enctype</w>
+      <w>exts</w>
+      <w>filedata</w>
       <w>fillable</w>
+      <w>highcharts</w>
+      <w>hwby</w>
       <w>infos</w>
       <w>laracasts</w>
+      <w>morelinks</w>
+      <w>navbar</w>
       <w>nopadding</w>
+      <w>papaparse</w>
       <w>symfony</w>
+      <w>tablist</w>
       <w>unserialize</w>
+      <w>uploadify</w>
       <w>wechat</w>
       <w>weibo</w>
       <w>wysihtml</w>
       <w>yyyy</w>
+      <w>zepto</w>
     </words>
   </dictionary>
 </component>
